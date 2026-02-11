@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0B0F1A;
+  --foreground: #F1F5F9;
+  --primary: #3B82F6;
+  --primary-light: #60A5FA;
+  --accent: #F97316;
+  --accent-light: #FB923C;
+  --violet: #8B5CF6;
+  --dark: #0B0F1A;
+  --dark-card: #111827;
+  --dark-border: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-violet: var(--violet);
+  --color-dark: var(--dark);
+  --color-dark-card: var(--dark-card);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, #F97316 0%, #EF4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+/* Gradient border */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* Glow */
+.glow-primary {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.15), 0 0 80px rgba(139, 92, 246, 0.1);
+}
+.glow-accent {
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.2);
+}
+
+/* Dot grid bg */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Gradient mesh for hero */
+.gradient-mesh {
+  background:
+    radial-gradient(at 27% 37%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, rgba(139, 92, 246, 0.12) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+/* Chat widget scrollbar */
+.chat-scrollbar::-webkit-scrollbar { width: 4px; }
+.chat-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.chat-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+.chat-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+.chat-scrollbar { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.08) transparent; }
