@@ -2,15 +2,23 @@
 
 import { motion } from 'framer-motion';
 import AnimatedSection, { StaggerContainer, StaggerItem } from './AnimatedSection';
+import { usePayment } from '@/components/payment/PaymentProvider';
+import type { PackageId } from '@/types/payment';
 
 export default function Pricing() {
-  const handleGetStarted = () => {
-    const element = document.getElementById('contact');
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { openPaymentModal } = usePayment();
 
-  const pricingPlans = [
+  const pricingPlans: Array<{
+    id: PackageId;
+    name: string;
+    oldPrice: string;
+    newPrice: string;
+    description: string;
+    features: string[];
+    popular: boolean;
+  }> = [
     {
+      id: 'starter',
       name: 'Starter Automation',
       oldPrice: '$500-1,000',
       newPrice: '$250-500',
@@ -25,6 +33,7 @@ export default function Pricing() {
       popular: false,
     },
     {
+      id: 'growth',
       name: 'Growth Package',
       oldPrice: '$1,250-2,500',
       newPrice: '$625-1,250',
@@ -40,6 +49,7 @@ export default function Pricing() {
       popular: true,
     },
     {
+      id: 'enterprise',
       name: 'Enterprise Suite',
       oldPrice: '$5,000+',
       newPrice: '$2,500+',
@@ -55,6 +65,7 @@ export default function Pricing() {
       popular: false,
     },
     {
+      id: 'ai-audit',
       name: 'AI Audit Only',
       oldPrice: '$300',
       newPrice: '$150',
@@ -146,7 +157,7 @@ export default function Pricing() {
 
                   {/* CTA Button */}
                   <button
-                    onClick={handleGetStarted}
+                    onClick={() => openPaymentModal(plan.id)}
                     className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
                       plan.popular
                         ? 'bg-gradient-to-r from-accent to-[#EF4444] text-white hover:opacity-90'

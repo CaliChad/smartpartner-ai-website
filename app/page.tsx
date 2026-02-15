@@ -13,9 +13,11 @@ import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/FinalCTA';
 import Contact from '@/components/Contact';
 import ChatWidget from '@/components/chat/ChatWidget';
+import PaymentProvider from '@/components/payment/PaymentProvider';
 
 export default function Home() {
   return (
+    <PaymentProvider>
     <div className="min-h-screen bg-dark">
       <Navigation />
       <Hero />
@@ -60,5 +62,6 @@ export default function Home() {
       {/* AI Chat Widget */}
       <ChatWidget />
     </div>
+    </PaymentProvider>
   );
 }

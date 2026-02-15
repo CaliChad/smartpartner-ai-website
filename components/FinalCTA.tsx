@@ -2,12 +2,14 @@
 
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
+import { usePayment } from '@/components/payment/PaymentProvider';
 
 export default function FinalCTA() {
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
+  const { openPaymentModal } = usePayment();
 
   const features = [
     'No long-term contracts',
@@ -60,12 +62,12 @@ export default function FinalCTA() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={scrollToContact}
+              onClick={() => openPaymentModal('ai-audit')}
               className="group relative px-8 py-4 rounded-xl font-semibold text-lg text-white overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-accent to-[#EF4444] group-hover:opacity-90 transition-opacity" />
               <span className="relative flex items-center justify-center gap-2">
-                Get Your Free Automation Audit
+                Book Paid Consultation — $150
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </span>
             </button>

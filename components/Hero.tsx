@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Counter } from './AnimatedSection';
+import { usePayment } from '@/components/payment/PaymentProvider';
 
 export default function Hero() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const { openPaymentModal } = usePayment();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark">
@@ -34,10 +36,10 @@ export default function Hero() {
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-          <button onClick={() => scrollTo('contact')} className="group relative px-8 py-4 rounded-xl font-semibold text-lg text-white overflow-hidden">
+          <button onClick={() => openPaymentModal('ai-audit')} className="group relative px-8 py-4 rounded-xl font-semibold text-lg text-white overflow-hidden">
             <span className="absolute inset-0 bg-gradient-to-r from-accent to-[#EF4444] group-hover:opacity-90 transition-opacity" />
             <span className="relative flex items-center justify-center gap-2">
-              Get Your Free Audit
+              Book AI Audit — $150
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </span>
           </button>

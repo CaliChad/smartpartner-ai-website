@@ -2,12 +2,10 @@
 
 import { motion } from 'framer-motion';
 import AnimatedSection, { StaggerContainer, StaggerItem } from './AnimatedSection';
+import { usePayment } from '@/components/payment/PaymentProvider';
 
 export default function AIAudit() {
-  const handleBookAudit = () => {
-    const element = document.getElementById('contact');
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { openPaymentModal } = usePayment();
 
   const whatYouGet = [
     '60-minute process deep-dive session',
@@ -103,7 +101,7 @@ export default function AIAudit() {
                 <div className="text-6xl font-bold gradient-text mt-2">$150</div>
               </div>
               <button
-                onClick={handleBookAudit}
+                onClick={() => openPaymentModal('ai-audit')}
                 className="group relative w-full px-8 py-4 rounded-xl font-semibold text-lg text-white overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-accent to-[#EF4444] group-hover:opacity-90 transition-opacity" />
